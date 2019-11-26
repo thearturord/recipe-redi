@@ -21,6 +21,7 @@ async function getRecipes(ingredients) {
 
 function showResults(recipeList) {
     let recipeListWrapper = document.createElement('div');
+    recipeListWrapper.innerHTML = "";
     recipeListWrapper.id = 'recipeList';
     document.body.appendChild(recipeListWrapper);
     console.log(recipeList);
