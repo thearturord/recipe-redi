@@ -9,19 +9,24 @@
   <body>
     <header>
       <div id="header-wrapper">
-        <div>
+        <div id="logo">
           <h1>Whattacook</h1>
         </div>
-        <div>
+        <div id="search">
           <input type="text" id="searchField" placeholder="Search over recipes.." />
           <!-- onfocus="this.value=''" - clears the search field -->
         </div>
         <div>
           <button onclick="onSearchClicked()">Search</button>
         </div>
+
       </div>
     </header>
-    
+    <div id="big-container">
+      <section id="recipeList"></section>
+      <section id="recipe"></section>
+      <section id="shoppingList"></section>
+    </div>
 
     <script src="main.js"></script>
   </body>
