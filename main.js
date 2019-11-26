@@ -2,10 +2,10 @@ let apiKey = "90b4bf234e22493e89325b6f9cce868e";
 
 let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + apiKey;
 
-function onSearchClicked() {
+async function onSearchClicked() {
     let ingredients = document.getElementById("searchField").value;
     // console.log(ingredients);
-    let results = getRecipes(ingredients);
+    let results = await getRecipes(ingredients);
     // console.log(results);
     showResults(results);
 }
