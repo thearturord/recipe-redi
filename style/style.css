@@ -1,0 +1,48 @@
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px black solid;
+  height: 100px;
+}
+
+.big-container{
+  display: flex;
+  border: 1px black solid;
+  height:500px;
+}
+
+#results{
+  border: 1px black solid;
+  /* height: 100px; */
+  width: 20%;
+}
+
+#results h2{
+display: none;
+}
+
+#middle{
+  border: 1px black solid;
+  /* height: 100px; */
+  width: 60%;
+}
+
+#favorites{
+  border: 1px black solid;
+  /* height: 100px; */
+  width: 20%;
+}
+
+.hola{
+  display: block;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px black solid;
+  height:100px;
+}

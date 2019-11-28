@@ -1,43 +1,64 @@
 
-var api = "https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api";
-var ingredients = "/";
-var 
+//
+// let square = document.getElementById('hi');
+//
+// function hola(){
+//
+//   square.style.display = 'block';
+//   square.className = '';
+//
+// }
 
 
+let apiKey = "ff7d6e71b4244599a7b3c29ceb43f384";
+let apiKeyAlt = "90b4bf234e22493e89325b6f9cce868e";
 
-let boton = document.getElementById('boton');
-let input =  document.getElementById('input');
-let lista =  document.getElementById('lista');
+let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + apiKey;
 
+async function onSearchClicked() {
+    let ingredients = document.getElementById("searchField").value;
+    // console.log(ingredients);
+    let results = await getRecipes(ingredients);
+    // console.log(results);
+    showResults(results);
+}
 
-async function search() {
+async function getRecipes(ingredients) {
+    let url = baseUrl + "&ingredients=" + encodeURIComponent(ingredients) + "&number=2";
+    // console.log(url);
+    let response = await fetch(url);
+    let recipeList = await response.json();
+    // console.log(recipeList);
+    return recipeList;
+}
 
-  // let userInput = encodeURIComponent(input.value);
-  //
-  // let link = 'https://en.wikipedia.org/w/api.php?action=query&list=search&utf8=&format=json&origin=*&srlimit=50&srsearch=' + userInput;
+function showResults(recipeList) {
+    let recipeListWrapper = document.createElement('div');
+    recipeListWrapper.innerHTML = "";
+    recipeListWrapper.id = 'recipeList';
+    document.body.appendChild(recipeListWrapper);
+    console.log(recipeList);
 
+    for (let i = 0; i < recipeList.length; i++) {
+        let recipeEl = document.createElement('div');
+        recipeEl.className = 'recipeEl';
+        recipeListWrapper.appendChild(recipeEl);
 
-  let response = await fetch(api);
+        let recipeImgEl = document.createElement('div');
+        recipeImgEl.className = 'thumbnailImg';
+        recipeEl.appendChild(recipeImgEl);
 
-  let result = await response.json();
+        let thumbnailImg = document.createElement('img');
+        thumbnailImg.src = recipeList[i].image;
+        recipeImgEl.appendChild(thumbnailImg);
 
+        let recipeInfoEl = document.createElement('div');
+        recipeInfoEl.className = 'recipeInfo';
+        recipeEl.appendChild(recipeInfoEl);
 
-  console.log(result);
-
-  // let array = result.query.search;
-  //
-  // for(x of array){
-  //
-  //   let resultID = x.pageid;
-  //
-  //   let li = document.createElement('li');
-  //   let a = document.createElement('a');
-  //   li.appendChild(a);
-  //   a.textContent = x.title;
-  //   a.href = 'http://en.wikipedia.org/?curid=' + resultID;
-  //   a.target = "_blank";
-  //   lista.appendChild(li);
-  //
-  // }
-
-};
+        let recipeName = document.createElement('h2');
+        recipeName.className = 'recipeName';
+        recipeName.textContent = recipeList[i].title;
+        recipeInfoEl.appendChild(recipeName);
+    }
+}

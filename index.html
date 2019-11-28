@@ -1,33 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Whattacook</title>
-  </head>
-  <body>
-    <header>
-      <div id="header-wrapper">
-        <div id="logo">
-          <h1>Whattacook</h1>
-        </div>
-        <div id="search">
-          <input type="text" id="searchField" placeholder="Search over recipes.." />
-          <!-- onfocus="this.value=''" - clears the search field -->
-        </div>
-        <div>
-          <button onclick="onSearchClicked()">Search</button>
-        </div>
+<html lang="en" dir="ltr">
 
-      </div>
-    </header>
-    <div id="big-container">
-      <section id="recipeList"></section>
-      <section id="recipe"></section>
-      <section id="shoppingList"></section>
+<head>
+  <meta charset="utf-8">
+  <title>WhattaCook</title>
+  <link rel="stylesheet" href="style/style.css">
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>im logo</h1>
     </div>
+    <nav>
 
-    <script src="main.js"></script>
-  </body>
+      <div class="search">
+        <input id="searchField" type="text" name="" value="">
+        <button onclick="onSearchClicked()" type="button" name="button">Search</button>
+      </div>
+    </nav>
+
+    <div class="love">
+      <h1>im love</h1>
+    </div>
+  </header>
+
+  <div class="big-container">
+    <section id="results">
+      <h1 onclick="hola()">Im the result</h1>
+      <h2 id="hi">Im hidden</h2>
+    </section>
+
+    <section id="middle">
+
+    </section>
+
+    <section id="favorites">
+
+    </section>
+  </div>
+
+  <footer>
+    <h1>Reserverd Copywrite 2019</h1>
+  </footer>
+
+  <script src="javascript/main.js"></script>
+</body>
+
 </html>
