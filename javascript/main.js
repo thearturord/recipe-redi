@@ -20,16 +20,15 @@ async function getRecipes(ingredients) {
 }
 
 function showResults(recipeList) {
-    let recipeListWrapper = document.createElement('div');
-    recipeListWrapper.innerHTML = "";
-    recipeListWrapper.id = 'recipeList';
-    document.body.appendChild(recipeListWrapper);
-    console.log(recipeList);
+    let clearResults = document.getElementById("recipeList");
+    clearResults.innerHTML = "";
+    // console.log(recipeList);
 
     for (let i = 0; i < recipeList.length; i++) {
         let recipeEl = document.createElement('div');
         recipeEl.className = 'recipeEl';
-        recipeListWrapper.appendChild(recipeEl);
+        recipeEl.onclick = function() {showRecipe(recipeList[i]);}
+        document.getElementById("recipeList").appendChild(recipeEl);
 
         let recipeImgEl = document.createElement('div');
         recipeImgEl.className = 'thumbnailImg';
@@ -48,4 +47,32 @@ function showResults(recipeList) {
         recipeName.textContent = recipeList[i].title;
         recipeInfoEl.appendChild(recipeName);
     }
+}
+
+function showRecipe(recipe) {
+    console.log(recipe.title);
+    let clearResults = document.getElementById("recipe");
+    clearResults.innerHTML = "";
+
+    let recipeEl = document.createElement('div');
+    recipeEl.className = 'recipeEl';
+    document.getElementById('recipe').appendChild(recipeEl);
+
+    let recipeImgEl = document.createElement('div');
+    recipeImgEl.className = 'bigImg';
+    recipeEl.appendChild(recipeImgEl);
+
+    let thumbnailImg = document.createElement('img');
+    thumbnailImg.src = recipe[i].image;
+    recipeImgEl.appendChild(thumbnailImg);
+
+    let recipeInfoEl = document.createElement('div');
+    recipeInfoEl.className = 'recipeInfo';
+    recipeEl.appendChild(recipeInfoEl);
+
+    let recipeName = document.createElement('h2');
+    recipeName.className = 'recipeName';
+    recipeName.textContent = recipe[i].title;
+    recipeInfoEl.appendChild(recipeName);
+
 }

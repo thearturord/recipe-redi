@@ -4,30 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <script src="https://kit.fontawesome.com/de514a2348.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
     <title>Whattacook</title>
   </head>
   <body>
     <header>
-      <div id="header-wrapper">
-        <div id="logo">
-          <h1>Whattacook</h1>
+      <img src="style/img/logo.png" alt="logo" id="logo" />
+
+      <nav>
+        <div id="input-group">
+          <input
+            type="text"
+            id="searchField"
+            placeholder="Search over recipes.."
+          />
+          <button type="button" onclick="onSearchClicked()">
+            <i class="fas fa-search"></i>Search
+          </button>
         </div>
-        <div id="search">
-          <input type="text" id="searchField" placeholder="Search over recipes.." />
-          <!-- onfocus="this.value=''" - clears the search field -->
-        </div>
-        <div>
-          <button onclick="onSearchClicked()">Search</button>
-        </div>
-        
-      </div>
+      </nav>
     </header>
+
     <div id="big-container">
       <section id="recipeList"></section>
+
       <section id="recipe"></section>
+
       <section id="shoppingList"></section>
     </div>
 
-    <script src="main.js"></script>
+    <script src="javascript/main.js"></script>
   </body>
 </html>

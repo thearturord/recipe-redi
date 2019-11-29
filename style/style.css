@@ -1,0 +1,61 @@
+body {
+    font: normal 15px 'Lato', sans-serif;
+    color: #000;
+    background-color: white;
+}
+
+header {
+background-color:white;
+font-size: 18px;
+color: black;
+display: flex; 
+align-items: center;
+padding: 30px 0;
+border-bottom: 1px solid black;
+}
+
+button {
+    background-color: white;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    padding: 18px 32px 18px 24px;
+    border: 2px solid black;
+    border-radius: 27px;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.fas fa-search {
+    font-size: 16px;
+    padding: 0 8px 0 0; /*doesn't work */
+}
+
+#searchField {
+    background-color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 18px 32px;
+    border: 2px solid black;
+    border-radius: 27px;
+}
+
+.big-container {
+    display: flex;
+}
+
+#recipeList {
+    border: 1px solid blue;
+}
+
+#recipe {
+    border: 1px solid red;  
+}
+
+#shoppingList {
+    border: 1px solid green;
+}
+
