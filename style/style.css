@@ -1,48 +1,156 @@
-header{
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.page-wrapper {
+  width: 95%;
+}
+
+header {
+  display: flex;
+  align-items: center;
   justify-content: space-around;
-  border: 1px black solid;
   height: 100px;
 }
 
-.big-container{
-  display: flex;
-  border: 1px black solid;
-  height:500px;
+.logo {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-#results{
-  border: 1px black solid;
+.logo a {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  height: 198px;
+  transform: translate(-50%, 0%);
+}
+
+.search {
+  border-radius: 40px;
+  background: #585858;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-search {
+  text-decoration: none;
+  border: none;
+}
+
+.searchField {
+  position: relative;
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  color: white;
+  font-size: 20px;
+  transition: 0.4s;
+  padding: 0;
+  width: 0px;
+}
+
+.search:hover>.searchField {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchField:focus {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search-btn {
+  color: white;
+  float: right;
+  border-radius: 50%;
+  background: #585858;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.fa-heart {
+  color: red;
+  font-size: 21px;
+  transform: translate(201%, 0%);
+}
+
+/*************** Big container here *********************/
+.big-container {
+  display: flex;
+  min-height: 500px;
+  max-height: 1000px;
+  background-color: #585858
+}
+
+#results {
   /* height: 100px; */
   width: 20%;
 }
 
-#results h2{
-display: none;
+.eachBoxName {
+  text-align: center;
+  color: white;
+  padding: 10px;
 }
 
-#middle{
-  border: 1px black solid;
+.thumbnailImg {
+  margin: 10px 0;
+}
+
+.picture {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+.recipeName {
+  font-size: 15px;
+  padding: 5px;
+  text-align: center;
+}
+
+#middle {
   /* height: 100px; */
   width: 60%;
 }
 
-#favorites{
-  border: 1px black solid;
+#favorites {
   /* height: 100px; */
   width: 20%;
 }
 
-.hola{
+.hola {
   display: block;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px black solid;
-  height:100px;
+}
+
+footer p {
+  font-size: 24px;
+  padding: 10px;
 }

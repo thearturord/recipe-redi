@@ -4,48 +4,60 @@
 <head>
   <meta charset="utf-8">
   <title>WhattaCook</title>
+  <link rel="shortcut icon" href="media/logo.png">
   <link rel="stylesheet" href="style/style.css">
-
+  <script src='https://kit.fontawesome.com/2c36e9b7b1.js' crossorigin='anonymous'></script>
+  <link href='https://fonts.googleapis.com/css?family=Lato:350,400,700|Oswald&display=swap' rel='stylesheet'>
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">
-      <h1>im logo</h1>
-    </div>
-    <nav>
+  <div class="page-wrapper">
 
-      <div class="search">
-        <input id="searchField" type="text" name="" value="">
-        <button onclick="onSearchClicked()" type="button" name="button">Search</button>
+    <header>
+      <div class="logo">
+        <a href="index.html"><img src="media/logo.png" alt=""></a>
       </div>
-    </nav>
+      <nav>
 
-    <div class="love">
-      <h1>im love</h1>
+        <div class="search">
+          <input class="searchField" id="searchField" type="text" name="" value="">
+          <a class="search-btn"><i class="fas fa-search"></i></a>
+        </div>
+      </nav>
+
+      <div class="love">
+        <i class="fas fa-heart"></i>
+      </div>
+    </header>
+
+    <div class="big-container">
+
+      <section id="results">
+        <div class="eachBoxName">
+          <h1>Results</h1>
+        </div>
+      </section>
+
+      <section id="middle">
+        <div class="eachBoxName">
+          <h1>Recipes details</h1>
+        </div>
+      </section>
+
+      <section id="favorites">
+        <div class="eachBoxName">
+          <h1>favorite</h1>
+        </div>
+      </section>
     </div>
-  </header>
 
-  <div class="big-container">
-    <section id="results">
-      <h1 onclick="hola()">Im the result</h1>
-      <h2 id="hi">Im hidden</h2>
-    </section>
+    <footer>
+      <p>Reserverd Copywrite 2019</p>
+    </footer>
 
-    <section id="middle">
-
-    </section>
-
-    <section id="favorites">
-
-    </section>
   </div>
-
-  <footer>
-    <h1>Reserverd Copywrite 2019</h1>
-  </footer>
 
   <script src="javascript/main.js"></script>
 </body>
