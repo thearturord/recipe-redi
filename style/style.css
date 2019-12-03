@@ -7,6 +7,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("../media/bo.jpg");
 }
 
 .page-wrapper {
@@ -17,13 +18,17 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 100px;
+  height: 80px;
+  background-color: #E0E0F8;
+  margin: 20px 0;
+  border-radius: 5px;
 }
 
 .logo {
   display: block;
   height: 100%;
   box-sizing: border-box;
+    transform: translate(-50%, 0%);
 }
 
 .logo a {
@@ -33,18 +38,19 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .logo img {
   display: block;
   height: 198px;
-  transform: translate(-50%, 0%);
+
 }
 
 .search {
   border-radius: 40px;
   background: #585858;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,18 +106,24 @@ header {
   display: flex;
   min-height: 500px;
   max-height: 1000px;
-  background-color: #585858
+  background-color: #585858;
+  border-radius: 2px;
 }
 
 #results {
   /* height: 100px; */
   width: 20%;
+  overflow-y:auto
 }
 
 .eachBoxName {
   text-align: center;
   color: white;
   padding: 10px;
+  background-color: #8258FA;
+  border-radius: 5px;
+  width: 50%;
+  margin: 5px auto;
 }
 
 .thumbnailImg {
@@ -125,9 +137,10 @@ header {
 }
 
 .recipeName {
-  font-size: 15px;
+  font-size: 18px;
   padding: 5px;
   text-align: center;
+  color:white;
 }
 
 #middle {
@@ -153,4 +166,5 @@ footer {
 footer p {
   font-size: 24px;
   padding: 10px;
+  color: white;
 }
