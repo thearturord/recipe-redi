@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../media/bo2.jpg");
+  background-size: cover;
+}
+
+.page-wrapper {
+  width: 95%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 80px;
+  background-color: #E0E0F8;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.logo {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+    transform: translate(-50%, 0%);
+}
+
+.logo a {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo img {
+  display: block;
+  height: 198px;
+
+}
+
+.search {
+  border-radius: 40px;
+  background: #585858;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-search {
+  text-decoration: none;
+  border: none;
+}
+
+.searchField {
+  position: relative;
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  color: white;
+  font-size: 20px;
+  transition: 0.4s;
+  padding: 0;
+  width: 0px;
+}
+
+.search:hover>.searchField {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchField:focus {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search-btn {
+  color: white;
+  float: right;
+  border-radius: 50%;
+  background: #585858;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.fa-heart {
+  color: red;
+  font-size: 21px;
+  transform: translate(201%, 0%);
+}
+
+/*************** Big container here *********************/
+.big-container {
+  display: flex;
+  min-height: 500px;
+  max-height: 1000px;
+  /* background-color: #585858; */
+  background-color: rgb(58,58,58, 0.85);
+  /* background-color: rgb(255,255,255, 0.5); */
+  border-radius: 4px;
+  border: 5px solid #E0E0F8;
+}
+
+#results {
+  /* height: 100px; */
+  width: 20%;
+  overflow-y:auto
+}
+
+.eachBoxName {
+  text-align: center;
+  color: black;
+  padding: 2px;
+  background-color: #E0E0F8;
+  border-radius: 5px;
+  width: 50%;
+  margin: 15px auto;
+  font-size: 21px;
+}
+
+.eachBoxName h1 {
+  font-size: 21px;
+}
+
+.thumbnailImg {
+  margin: 10px 0;
+}
+
+.picture {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+.recipeName {
+  font-size: 17px;
+  padding: 5px;
+  text-align: center;
+  color:white;
+}
+
+#middle {
+  /* height: 100px; */
+  width: 60%;
+}
+
+.infoFix{
+
+}
+
+.servingsEl{
+  color: white;
+}
+
+.cookingTimeEl{
+  color: white;
+}
+
+.ingredientsEl{
+  color: white;
+}
+
+#favorites {
+  /* height: 100px; */
+  width: 20%;
+}
+
+.hola {
+  display: block;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #424242;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+footer p {
+  font-size: 20px;
+  padding: 10px;
+  color: white;
+}
+
+footer p::before {
+  content: \f02d ;
+  font-size: 20px;
+  color: white;
+}
