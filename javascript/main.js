@@ -1,17 +1,30 @@
 let apiKey = "90b4bf234e22493e89325b6f9cce868e";
 
-let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + apiKey;
+let randomRecipesUrl = "https://api.spoonacular.com/recipes/random?apiKey=" + apiKey + "&number=2";
+
+let recipesByIngredientsUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + apiKey + "&number=2";
+
+let recipeFullInfoEndpointUrl = "https://api.spoonacular.com/recipes/";
 
 async function onSearchClicked() {
-    let ingredients = document.getElementById("searchField").value;
-    // console.log(ingredients);
-    let results = await getRecipes(ingredients);
-    // console.log(results);
+    let userInput = document.getElementById("searchField").value;
+    let results = await searchRecipesByIngredients(userInput);
     showResults(results);
 }
 
-async function getRecipes(ingredients) {
-    let url = baseUrl + "&ingredients=" + encodeURIComponent(ingredients) + "&number=2";
+async function getRandomRecepies() {
+    let response = await fetch(randomRecipesUrl);
+    let recipeList = await response.json();
+    return recipeList.recipes;
+}
+
+async function showRandomRecipes() {
+    let results = await getRandomRecepies();
+    showResults(results);
+}
+
+async function searchRecipesByIngredients(items) {
+    let url = recipesByIngredientsUrl + "&ingredients=" + encodeURIComponent(items);
     // console.log(url);
     let response = await fetch(url);
     let recipeList = await response.json();
@@ -20,23 +33,21 @@ async function getRecipes(ingredients) {
 }
 
 function showResults(recipeList) {
-    let clearResults = document.getElementById("recipeList");
-    clearResults.innerHTML = "";
-    // console.log(recipeList);
+    clearResults();
+    clearRecipe();
 
     for (let i = 0; i < recipeList.length; i++) {
         let recipeEl = document.createElement('div');
         recipeEl.className = 'recipeEl';
-        recipeEl.onclick = function() {showRecipe(recipeList[i]);}
+        recipeEl.onclick = function () {
+            showRecipe(recipeList[i].id);
+        }
         document.getElementById("recipeList").appendChild(recipeEl);
 
-        let recipeImgEl = document.createElement('div');
-        recipeImgEl.className = 'thumbnailImg';
-        recipeEl.appendChild(recipeImgEl);
-
         let thumbnailImg = document.createElement('img');
+        thumbnailImg.className = 'thumb';
         thumbnailImg.src = recipeList[i].image;
-        recipeImgEl.appendChild(thumbnailImg);
+        recipeEl.appendChild(thumbnailImg);
 
         let recipeInfoEl = document.createElement('div');
         recipeInfoEl.className = 'recipeInfo';
@@ -49,30 +60,78 @@ function showResults(recipeList) {
     }
 }
 
-function showRecipe(recipe) {
-    console.log(recipe.title);
-    let clearResults = document.getElementById("recipe");
+function clearResults() {
+    let clearResults = document.getElementById("recipeList");
     clearResults.innerHTML = "";
+}
 
-    let recipeEl = document.createElement('div');
-    recipeEl.className = 'recipeEl';
-    document.getElementById('recipe').appendChild(recipeEl);
+async function getRecipeFullInfo(item) {
+    let url = recipeFullInfoEndpointUrl + item + "/information?includeNutrition=true&apiKey=" + apiKey;
+    // console.log(url);
+    let response = await fetch(url);
+    let recipeInfo = await response.json();
+    // console.log(recipeInfo);
+    return recipeInfo;
+}
 
-    let recipeImgEl = document.createElement('div');
-    recipeImgEl.className = 'bigImg';
-    recipeEl.appendChild(recipeImgEl);
+async function showRecipe(id) {
+    clearRecipe();
 
-    let thumbnailImg = document.createElement('img');
-    thumbnailImg.src = recipe[i].image;
-    recipeImgEl.appendChild(thumbnailImg);
+    let recipeFullInfo = await getRecipeFullInfo(id);
+    console.log(recipeFullInfo);
+
+    let bigImg = document.createElement('img');
+    bigImg.src = recipeFullInfo.image;
+    document.getElementById("recipe").appendChild(bigImg);
 
     let recipeInfoEl = document.createElement('div');
     recipeInfoEl.className = 'recipeInfo';
-    recipeEl.appendChild(recipeInfoEl);
+    document.getElementById("recipe").appendChild(recipeInfoEl);
 
     let recipeName = document.createElement('h2');
     recipeName.className = 'recipeName';
-    recipeName.textContent = recipe[i].title;
+    recipeName.textContent = recipeFullInfo.title;
     recipeInfoEl.appendChild(recipeName);
 
+    let servingsEl = document.createElement('div');
+    servingsEl.className = 'servingsEl';
+    recipeInfoEl.appendChild(servingsEl);
+
+    let servings = document.createElement('p');
+    servings.className = 'servings';
+    if (recipeFullInfo.servings === 1) {
+        servings.textContent = recipeFullInfo.servings + ' serving';
+    } else {
+        servings.textContent = recipeFullInfo.servings + ' servings';
+    }
+    servingsEl.appendChild(servings);
+
+    let cookingTimeEl = document.createElement('div');
+    cookingTimeEl.className = 'cookingTimeEl';
+    recipeInfoEl.appendChild(cookingTimeEl);
+
+    let cookingTime = document.createElement('p');
+    cookingTime.className = 'cookingTime';
+    cookingTime.textContent = recipeFullInfo.readyInMinutes + ' Min';
+    cookingTimeEl.appendChild(cookingTime);
+
+    let ingredientsEl = document.createElement('ul');
+    ingredientsEl.className = 'ingredientsEl';
+    ingredientsEl.textContent = 'Ingredients: ';
+    recipeInfoEl.appendChild(ingredientsEl);
+
+    for (let i=0; i < recipeFullInfo.extendedIngredients.length; i++) {
+        let ingredient = document.createElement('li');
+        ingredient.textContent = recipeFullInfo.extendedIngredients[i].original;
+        // console.log(ingredient);
+        ingredientsEl.appendChild(ingredient);
+    }
 }
+
+function clearRecipe() {
+    let clearResults = document.getElementById("recipe");
+    clearResults.innerHTML = "";
+    // console.log(clearResults);
+}
+
+showRandomRecipes();
