@@ -146,6 +146,10 @@ header {
   width: 80%;
 }
 
+.picture:hover {
+  cursor: pointer;
+}
+
 .recipeName {
   font-size: 17px;
   padding: 5px;
@@ -158,20 +162,74 @@ header {
   width: 60%;
 }
 
-.infoFix{
+.resultContent{
+  padding: 10px 0;
+}
 
+.bigImg{
+  display: block;
+  width: 80%;
+  margin: auto;
+}
+
+.infoFix{
+ color: white;
+ padding: 5px 0;
+}
+
+.timeAndServing{
+  display: flex;
+  padding: 5px 0;
 }
 
 .servingsEl{
-  color: white;
+
+}
+
+.servings{
+  padding-right: 5px;
+}
+
+.servings::before{
+  font-family: 'Font Awesome 5 Free';
+  content: '\f2e7';
+  font-weight: 900;
+  font-size: 15px;
+  padding: 0 5px;
 }
 
 .cookingTimeEl{
-  color: white;
+  padding: 0;
+}
+
+.cookingTime{
+
+}
+
+.cookingTime::before{
+  font-family: 'Font Awesome 5 Free';
+  content: '\f017';
+  font-weight: 900;
+  font-size: 15px;
+  padding: 0 5px;
 }
 
 .ingredientsEl{
-  color: white;
+
+}
+
+.ingredientsEl li{
+  list-style: inside;
+  line-height: 20px;
+  padding: 1px;
+}
+
+.instructionsEl{
+
+}
+
+.sourceEl{
+
 }
 
 #favorites {
@@ -198,8 +256,11 @@ footer p {
   color: white;
 }
 
-footer p::before {
-  content: \f02d ;
-  font-size: 20px;
+/* footer p::before {
+  font-family: 'Font Awesome 5 Free';
+  content: '\f02d';
+  font-weight: 900;
+  font-size: 17px;
   color: white;
-}
+  padding: 0 7px;
+} */

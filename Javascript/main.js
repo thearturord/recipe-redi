@@ -95,20 +95,25 @@ async function showRecipe(id) {
 
     let bigImg = document.createElement('img');
     bigImg.src = recipeFullInfo.image;
+    bigImg.className = 'bigImg';
     resultContent.appendChild(bigImg);
 
     let recipeInfoEl = document.createElement('div');
-    recipeInfoEl.className = 'recipeInfo';
+    recipeInfoEl.className = 'recipeInfo' + ' ' + 'infoFix';
     resultContent.appendChild(recipeInfoEl);
 
     let recipeName = document.createElement('h2');
-    recipeName.className = 'recipeName';
+    recipeName.className = 'recipeName' + ' ' + 'infoFix';
     recipeName.textContent = recipeFullInfo.title;
     recipeInfoEl.appendChild(recipeName);
 
+    let timeAndServing = document.createElement('div');
+    timeAndServing.className = 'timeAndServing';
+    recipeInfoEl.appendChild(timeAndServing);
+
     let servingsEl = document.createElement('div');
-    servingsEl.className = 'servingsEl';
-    recipeInfoEl.appendChild(servingsEl);
+    servingsEl.className = 'servingsEl' + ' ' + 'infoFix';
+    timeAndServing.appendChild(servingsEl);
 
     let servings = document.createElement('p');
     servings.className = 'servings';
@@ -120,16 +125,16 @@ async function showRecipe(id) {
     servingsEl.appendChild(servings);
 
     let cookingTimeEl = document.createElement('div');
-    cookingTimeEl.className = 'cookingTimeEl';
-    recipeInfoEl.appendChild(cookingTimeEl);
+    cookingTimeEl.className = 'cookingTimeEl' + ' ' + 'infoFix';
+    timeAndServing.appendChild(cookingTimeEl);
 
     let cookingTime = document.createElement('p');
-    cookingTime.className = 'cookingTime';
+    cookingTime.className = 'cookingTime' + ' ' + 'infoFix';
     cookingTime.textContent = recipeFullInfo.readyInMinutes + ' Min';
     cookingTimeEl.appendChild(cookingTime);
 
     let ingredientsEl = document.createElement('ul');
-    ingredientsEl.className = 'ingredientsEl';
+    ingredientsEl.className = 'ingredientsEl' + ' ' + 'infoFix';
     ingredientsEl.textContent = 'Ingredients: ';
     recipeInfoEl.appendChild(ingredientsEl);
 
@@ -139,6 +144,19 @@ async function showRecipe(id) {
         // console.log(ingredient);
         ingredientsEl.appendChild(ingredient);
     }
+
+    let instructionsEl = document.createElement('p');
+    instructionsEl.className = 'instructionsEl' + ' ' + 'infoFix';
+    instructionsEl.textContent = recipeFullInfo.analyzedInstructions[0].steps[0].step;
+    resultContent.appendChild(instructionsEl);
+
+    let sourceEl = document.createElement('a');
+    sourceEl.className = 'sourceEl' + ' ' + 'infoFix';
+    sourceEl.textContent = 'View full information about this recipe here';
+    sourceEl.href = recipeFullInfo.sourceUrl;
+    sourceEl.target = '_blank';
+    resultContent.appendChild(sourceEl);
+
 }
 
 function clearResults() {
