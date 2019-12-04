@@ -107,7 +107,7 @@ header {
 .big-container {
   display: flex;
   min-height: 500px;
-  max-height: 1000px;
+  max-height: 1700px;
   /* background-color: #585858; */
   background-color: rgb(58,58,58, 0.85);
   /* background-color: rgb(255,255,255, 0.5); */
@@ -116,7 +116,6 @@ header {
 }
 
 #results {
-  /* height: 100px; */
   width: 20%;
   overflow-y:auto
 }
@@ -158,8 +157,8 @@ header {
 }
 
 #middle {
-  /* height: 100px; */
-  width: 60%;
+  width: 80%;
+  padding: 0 10px;
 }
 
 .resultContent{
@@ -168,13 +167,18 @@ header {
 
 .bigImg{
   display: block;
-  width: 80%;
+  width: 70%;
   margin: auto;
+}
+
+.recipeNameBig{
+  font-size: 21px;
 }
 
 .infoFix{
  color: white;
  padding: 5px 0;
+ font-size: 18px;
 }
 
 .timeAndServing{
@@ -233,8 +237,8 @@ header {
 }
 
 #favorites {
-  /* height: 100px; */
   width: 20%;
+  display: none;
 }
 
 .hola {
