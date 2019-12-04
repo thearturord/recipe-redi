@@ -1,5 +1,6 @@
 let apiKey = "ff7d6e71b4244599a7b3c29ceb43f384";
 let apiKeyAlt = "90b4bf234e22493e89325b6f9cce868e";
+let apiKeyAlt2 = "410ef8bc76654549b955c1fb5a1ba3ed";
 
 let baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + apiKey;
 let recipeFullInfoEndpointUrl = "https://api.spoonacular.com/recipes/";
@@ -174,13 +175,17 @@ function displayFav() {
 
   if (x){
     middleSection.style.width = '60%';
-    bigImg.style.width = '80%';
     favorites.style.display = 'block';
+    if(bigImg === !null){
+      bigImg.style.width = '60%';
+    }
     x = false;
   }else{
     middleSection.style.width = '80%';
-    bigImg.style.width = '70%';
     favorites.style.display = 'none';
+    if(bigImg === !null){
+      bigImg.style.width = '50%';
+    }
     x = true;
   }
 

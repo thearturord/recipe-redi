@@ -167,7 +167,7 @@ header {
 
 .bigImg{
   display: block;
-  width: 70%;
+  width: 60%;
   margin: auto;
 }
 
@@ -239,6 +239,7 @@ header {
 #favorites {
   width: 20%;
   display: none;
+  transition: 0.4s;
 }
 
 .hola {
