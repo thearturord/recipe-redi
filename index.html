@@ -16,8 +16,8 @@
   <body>
     <header>
       <div id="logo-wrapper">
-      <img href="#" src="style/img/logo.png" alt="logo" id="logo" />
-    </div>
+        <img href="#" src="style/img/logo.png" alt="logo" id="logo" />
+      </div>
       <nav>
         <div id="input-group">
           <input
@@ -25,14 +25,17 @@
             id="searchField"
             placeholder="Search over recipes.."
           />
-          <button type="button" onclick="onSearchClicked()"><i class="fas fa-search"></i>Search</button>
+          <button type="button" onclick="onSearchClicked()">
+            <i class="fas fa-search"></i>Search
+          </button>
         </div>
       </nav>
+      <div id="heart"><i class="fas fa-heart"></i></div>
     </header>
 
     <div id="big-container">
-      <section id="recipeList"></section>
-      <section id="recipe"></section>
+      <section id="recipeListSection"></section>
+      <section id="recipeSection"></section>
     </div>
 
     <script src="javascript/main.js"></script>
