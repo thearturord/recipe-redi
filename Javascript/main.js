@@ -8,29 +8,32 @@ let recipeFullInfoEndpointUrl = "https://api.spoonacular.com/recipes/";
 let searchSubmit = document.getElementById("searchField");
 
 function saveRecipe(id) {
-    let img = document.getElementById('bigImg');
-    let title = document.getElementById('recipeNameBig');
+  let img = document.getElementById('bigImg');
+  let title = document.getElementById('recipeNameBig');
 
-    let newObj = {
-      title: title.textContent,
-      img: img.src,
-      id: id
-    }
+  let newObj = {
+    title: title.textContent,
+    img: img.src,
+    id: id
+  }
 
-    let write = JSON.stringify(newObj);
+  let write = JSON.stringify(newObj);
 
-    localStorage.setItem("favorite", write);
+  localStorage.setItem("favorite", write);
 }
 
-function renderFavorites(){
+function renderFavorites() {
 
+  let stringObjectFav = localStorage.getItem("favorite");
 
+  let read = JSON.parse(stringObjectFav);
+  
+  if (read === null) {
 
-    let stringObjectFav = localStorage.getItem("favorite");
+		read = {}
 
-    let read = JSON.parse(stringObjectFav);
-
-    let favoriteSection = document.getElementById('favorites');
+	}else{
+	let favoriteSection = document.getElementById('favorites');
 
     let div = document.createElement('div');
     favoriteSection.appendChild(div);
@@ -44,6 +47,7 @@ function renderFavorites(){
     title.textContent = read.title;
     title.className = 'favoriteTitle';
     div.appendChild(title);
+	}
 
 }
 
@@ -206,7 +210,10 @@ async function showRecipe(id) {
   let btnAddToFav = document.createElement('h1');
   btnAddToFav.textContent = 'save to fav';
   btnAddToFav.className = 'btnAddToFav';
-  btnAddToFav.onclick = function(){saveRecipe(id);renderFavorites();}
+  btnAddToFav.onclick = function() {
+    saveRecipe(id);
+    renderFavorites();
+  }
   btnAddToFav.style.color = 'white';
   resultContent.appendChild(btnAddToFav);
 }
