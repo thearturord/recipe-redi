@@ -30,7 +30,7 @@ header {
   display: block;
   height: 100%;
   box-sizing: border-box;
-    transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
 }
 
 .logo a {
@@ -46,7 +46,6 @@ header {
 .logo img {
   display: block;
   height: 198px;
-
 }
 
 .search {
@@ -109,7 +108,7 @@ header {
   min-height: 500px;
   max-height: 1700px;
   /* background-color: #585858; */
-  background-color: rgb(58,58,58, 0.85);
+  background-color: rgb(58, 58, 58, 0.85);
   /* background-color: rgb(255,255,255, 0.5); */
   border-radius: 4px;
   border: 5px solid #E0E0F8;
@@ -117,7 +116,7 @@ header {
 
 #results {
   width: 20%;
-  overflow-y:auto
+  overflow-y: auto
 }
 
 .eachBoxName {
@@ -153,7 +152,7 @@ header {
   font-size: 17px;
   padding: 5px;
   text-align: center;
-  color:white;
+  color: white;
 }
 
 #middle {
@@ -161,40 +160,38 @@ header {
   padding: 0 10px;
 }
 
-.resultContent{
+.resultContent {
   padding: 10px 0;
 }
 
-.bigImg{
+.bigImg {
   display: block;
   width: 60%;
   margin: auto;
 }
 
-.recipeNameBig{
+.recipeNameBig {
   font-size: 21px;
 }
 
-.infoFix{
- color: white;
- padding: 5px 0;
- font-size: 18px;
+.infoFix {
+  color: white;
+  padding: 5px 0;
+  font-size: 18px;
 }
 
-.timeAndServing{
+.timeAndServing {
   display: flex;
   padding: 5px 0;
 }
 
-.servingsEl{
+.servingsEl {}
 
-}
-
-.servings{
+.servings {
   padding-right: 5px;
 }
 
-.servings::before{
+.servings::before {
   font-family: 'Font Awesome 5 Free';
   content: '\f2e7';
   font-weight: 900;
@@ -202,15 +199,13 @@ header {
   padding: 0 5px;
 }
 
-.cookingTimeEl{
+.cookingTimeEl {
   padding: 0;
 }
 
-.cookingTime{
+.cookingTime {}
 
-}
-
-.cookingTime::before{
+.cookingTime::before {
   font-family: 'Font Awesome 5 Free';
   content: '\f017';
   font-weight: 900;
@@ -218,29 +213,22 @@ header {
   padding: 0 5px;
 }
 
-.ingredientsEl{
+.ingredientsEl {}
 
-}
-
-.ingredientsEl li{
+.ingredientsEl li {
   list-style: inside;
   line-height: 20px;
   padding: 1px;
 }
 
-.instructionsEl{
+.instructionsEl {}
 
-}
+.sourceEl {}
 
-.sourceEl{
-
-}
-
-.btnAddToFav::before{
+.btnAddToFav::before {
   content: '\f005';
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-
 }
 
 #favorites {
@@ -249,14 +237,27 @@ header {
   transition: 0.5s;
 }
 
-
-.favoriteImg{
-  display: block;
-  width: 80%;
+#favoritesWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.favoriteTitle{
+.favDiv {
+  margin: auto;
+      padding: 10px 0;
+}
+
+.favoriteImg {
+  display: block;
+  width: 80%;
+  margin: auto;
+}
+
+.favoriteTitle {
   color: white;
+  text-align: center;
   font-size: 18px;
 }
 

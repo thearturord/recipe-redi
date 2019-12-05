@@ -7,6 +7,8 @@ let recipeFullInfoEndpointUrl = "https://api.spoonacular.com/recipes/";
 
 let searchSubmit = document.getElementById("searchField");
 
+let read = [];
+
 function saveRecipe(id) {
   let img = document.getElementById('bigImg');
   let title = document.getElementById('recipeNameBig');
@@ -17,37 +19,61 @@ function saveRecipe(id) {
     id: id
   }
 
-  let write = JSON.stringify(newObj);
+  let found = false;
 
-  localStorage.setItem("favorite", write);
+  for (var i = 0; i < read.length; i++) {
+    if (newObj.id === read[i].id) {
+      found = true;
+    }
+  }
+
+  if (!found) {
+    read.push(newObj);
+  }
+
+  let write = JSON.stringify(read);
+
+  localStorage.setItem("favorites", write);
 }
 
 function renderFavorites() {
 
-  let stringObjectFav = localStorage.getItem("favorite");
+  let stringObjectFav = localStorage.getItem("favorites");
 
-  let read = JSON.parse(stringObjectFav);
-  
+  read = JSON.parse(stringObjectFav);
+
   if (read === null) {
 
-		read = {}
+    read = [];
 
-	}else{
-	let favoriteSection = document.getElementById('favorites');
+  } else {
 
-    let div = document.createElement('div');
-    favoriteSection.appendChild(div);
+    let favoriteSection = document.getElementById('favoritesWrap');
+    favoriteSection.innerHTML = "";
 
-    let img = document.createElement('img');
-    img.src = read.img;
-    img.className = 'favoriteImg';
-    div.appendChild(img);
+    for (var i = 0; i < read.length; i++) {
+      let div = document.createElement('div');
+      div.className = 'favDiv';
+      console.log(read[i].id);
+      let id = read[i].id;
+      div.onclick = function() {
+        showRecipe(id);
+      }
+      favoriteSection.appendChild(div);
 
-    let title = document.createElement('h1');
-    title.textContent = read.title;
-    title.className = 'favoriteTitle';
-    div.appendChild(title);
-	}
+      let img = document.createElement('img');
+      img.src = read[i].img;
+      img.className = 'favoriteImg';
+      div.appendChild(img);
+
+      let title = document.createElement('h1');
+      title.textContent = read[i].title;
+      title.className = 'favoriteTitle';
+      div.appendChild(title);
+    }
+
+
+  }
 
 }
 
@@ -70,7 +96,7 @@ async function onSearchClicked() {
 }
 
 async function getRecipes(ingredients) {
-  let url = baseUrl + "&ingredients=" + encodeURIComponent(ingredients) + "&number=2";
+  let url = baseUrl + "&ingredients=" + encodeURIComponent(ingredients) + "&number=4";
   // console.log(url);
   let response = await fetch(url);
   let recipeList = await response.json();
@@ -223,27 +249,27 @@ function clearResults() {
   resultDiv.innerHTML = "";
 }
 
-let x = true;
+let rendered = true;
 
 function displayFav() {
   let middleSection = document.getElementById('middle');
   let bigImg = document.getElementById('bigImg');
   let favorites = document.getElementById('favorites');
 
-  if (x) {
+  if (rendered) {
     middleSection.style.width = '60%';
     favorites.style.display = 'block';
     if (bigImg === !null) {
       bigImg.style.width = '60%';
     }
-    x = false;
+    rendered = false;
   } else {
     middleSection.style.width = '80%';
     favorites.style.display = 'none';
     if (bigImg === !null) {
       bigImg.style.width = '50%';
     }
-    x = true;
+    rendered = true;
   }
 
 
