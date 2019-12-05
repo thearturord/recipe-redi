@@ -236,14 +236,28 @@ header {
 
 }
 
+.btnAddToFav::before{
+  content: '\f005';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+
+}
+
 #favorites {
   width: 20%;
   display: none;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 
-.hola {
+
+.favoriteImg{
   display: block;
+  width: 80%;
+}
+
+.favoriteTitle{
+  color: white;
+  font-size: 18px;
 }
 
 footer {
