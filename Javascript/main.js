@@ -54,7 +54,6 @@ function renderFavorites() {
     for (var i = 0; i < read.length; i++) {
       let div = document.createElement('div');
       div.className = 'favDiv';
-      console.log(read[i].id);
       let id = read[i].id;
       div.onclick = function() {
         showRecipe(id);
@@ -72,7 +71,6 @@ function renderFavorites() {
       div.appendChild(title);
     }
 
-
   }
 
 }
@@ -87,9 +85,7 @@ searchSubmit.addEventListener("keyup", function() {
 
 async function onSearchClicked() {
   let ingredients = document.getElementById("searchField").value;
-  // console.log(ingredients);
   let results = await getRecipes(ingredients);
-  // console.log(results);
   clearResults();
   clearRecipe();
   showResults(results);
@@ -97,19 +93,15 @@ async function onSearchClicked() {
 
 async function getRecipes(ingredients) {
   let url = baseUrl + "&ingredients=" + encodeURIComponent(ingredients) + "&number=4";
-  // console.log(url);
   let response = await fetch(url);
   let recipeList = await response.json();
-  // console.log(recipeList);
   return recipeList;
 }
 
 async function getRecipeFullInfo(item) {
   let url = recipeFullInfoEndpointUrl + item + "/information?includeNutrition=true&apiKey=" + apiKey;
-  // console.log(url);
   let response = await fetch(url);
   let recipeInfo = await response.json();
-  // console.log(recipeInfo);
   return recipeInfo;
 }
 
@@ -119,8 +111,6 @@ function showResults(recipeList) {
   recipeListWrapper.innerHTML = "";
   recipeListWrapper.id = 'recipeList';
   resultDiv.appendChild(recipeListWrapper);
-  console.log(recipeList);
-
 
   for (let i = 0; i < recipeList.length; i++) {
 
@@ -156,7 +146,6 @@ function showResults(recipeList) {
 function clearRecipe() {
   let clearResults = document.getElementById("resultContent");
   clearResults.innerHTML = "";
-  // console.log(clearResults);
 }
 
 async function showRecipe(id) {
@@ -165,7 +154,6 @@ async function showRecipe(id) {
   let resultContent = document.getElementById("resultContent");
 
   let recipeFullInfo = await getRecipeFullInfo(id);
-  console.log(recipeFullInfo);
 
   let bigImg = document.createElement('img');
   bigImg.src = recipeFullInfo.image;
@@ -194,9 +182,9 @@ async function showRecipe(id) {
   let servings = document.createElement('p');
   servings.className = 'servings';
   if (recipeFullInfo.servings === 1) {
-    servings.textContent = recipeFullInfo.servings + ' serving';
+    servings.textContent = recipeFullInfo.servings + ' Serving';
   } else {
-    servings.textContent = recipeFullInfo.servings + ' servings';
+    servings.textContent = recipeFullInfo.servings + ' Servings';
   }
   servingsEl.appendChild(servings);
 
@@ -217,7 +205,6 @@ async function showRecipe(id) {
   for (let i = 0; i < recipeFullInfo.extendedIngredients.length; i++) {
     let ingredient = document.createElement('li');
     ingredient.textContent = recipeFullInfo.extendedIngredients[i].original;
-    // console.log(ingredient);
     ingredientsEl.appendChild(ingredient);
   }
 
@@ -233,15 +220,14 @@ async function showRecipe(id) {
   sourceEl.target = '_blank';
   resultContent.appendChild(sourceEl);
 
-  let btnAddToFav = document.createElement('h1');
-  btnAddToFav.textContent = 'save to fav';
-  btnAddToFav.className = 'btnAddToFav';
+  let btnAddToFav = document.createElement('i');
+  btnAddToFav.className = 'far fa-heart favSave';
   btnAddToFav.onclick = function() {
     saveRecipe(id);
     renderFavorites();
   }
-  btnAddToFav.style.color = 'white';
-  resultContent.appendChild(btnAddToFav);
+  timeAndServing.appendChild(btnAddToFav);
+
 }
 
 function clearResults() {
@@ -267,10 +253,9 @@ function displayFav() {
     middleSection.style.width = '80%';
     favorites.style.display = 'none';
     if (bigImg === !null) {
-      bigImg.style.width = '50%';
+      bigImg.style.width = '46%';
     }
     rendered = true;
   }
-
 
 }

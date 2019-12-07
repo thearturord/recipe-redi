@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../media/bo2.jpg");
+  background-image: url("../media/bo.jpg");
   background-size: cover;
 }
 
@@ -94,12 +94,14 @@ header {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.fa-heart {
+.displayFav {
   color: red;
   font-size: 21px;
   transform: translate(201%, 0%);
+  cursor: pointer;
 }
 
 /*************** Big container here *********************/
@@ -213,6 +215,20 @@ header {
   padding: 0 5px;
 }
 
+.favSave{
+  color: white;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.favSave::after{
+  content:"Add to favorites";
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  padding: 5px;
+}
+
+
 .ingredientsEl {}
 
 .ingredientsEl li {
@@ -246,7 +262,8 @@ header {
 
 .favDiv {
   margin: auto;
-      padding: 10px 0;
+  padding: 10px 0;
+  cursor: pointer;
 }
 
 .favoriteImg {
